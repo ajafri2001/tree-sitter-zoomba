@@ -19,8 +19,8 @@ module.exports = grammar({
 
     comment: ($) =>
       choice(
-        seq("//", /[^\n]*/), // Simple comments
-        seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"), // Multi-line C-style comments
+        seq("//", /[^\n]*/), // REGEX for Simple comments
+        seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"), // REGEX for Multi-line comments
       ),
 
     _statement: ($) =>

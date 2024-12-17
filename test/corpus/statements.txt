@@ -1,0 +1,26 @@
+===============
+Comments Test
+===============
+
+// Hello this is testing comments
+/* well well well
+    * well
+*/
+
+---
+
+(source_file 
+  (comment)
+  (comment))
+
+===============
+Println() test
+===============
+
+println('OLA OLA OLA */. \n ')
+
+---
+
+(source_file
+    (print_statement))
+
