@@ -1,0 +1,27 @@
+[package]
+name = "tree-sitter-zoomba"
+description = "Micro-Programming Language"
+version = "0.1.0"
+authors = ["Abdullah Arif Jafri <abdullahjafri2001@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["incremental", "parsing", "tree-sitter", "zoomba"]
+categories = ["parsing", "text-editors"]
+repository = "https://gitlab.com/non.est.sacra/zoomba"
+edition = "2021"
+autoexamples = false
+
+build = "bindings/rust/build.rs"
+include = ["bindings/rust/*", "grammar.js", "queries/*", "src/*"]
+
+[lib]
+path = "bindings/rust/lib.rs"
+
+[dependencies]
+tree-sitter-language = "0.1"
+
+[build-dependencies]
+cc = "1.1.22"
+
+[dev-dependencies]
+tree-sitter = "0.24.3"
