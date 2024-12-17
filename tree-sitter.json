@@ -3,7 +3,7 @@
     {
       "name": "zoomba",
       "camelcase": "Zoomba",
-      "scope": "source.zoomba",
+      "scope": "source.zm",
       "path": ".",
       "file-types": null,
       "injection-regex": "^zoomba$"
@@ -17,6 +17,10 @@
       {
         "name": "Abdullah Arif Jafri",
         "email": "abdullahjafri2001@gmail.com"
+      },
+      {
+        "name": "Nabarun Mondal",
+        "email": "non.est.sacra@gmail.com"
       }
     ],
     "links": {
