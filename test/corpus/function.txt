@@ -1,0 +1,13 @@
+===============
+Function test, only returns the identifier regex
+===============
+
+def x() {
+    return hello
+}
+
+---
+(source_file
+    (identifier)
+        (return_statement
+          (identifier)))
