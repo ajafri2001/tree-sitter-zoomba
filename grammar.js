@@ -18,6 +18,8 @@ module.exports = grammar({
     source_file: ($) => repeat($._statement),
 
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    number: ($) => /\d+/,
+    string: ($) => choice(seq("'", /[^']*/, "'"), seq('"', /[^"]*/, '"')),
 
     comment: ($) =>
       choice(
@@ -52,7 +54,7 @@ module.exports = grammar({
     parameter: ($) =>
       choice($.identifier, seq($.identifier, "=", $.identifier)),
 
-    return_statement: ($) => seq("return", $.identifier),
+    return_statement: ($) => seq("return", choice($.number, $.string)),
 
     _simple_statements: ($) => choice($.print_statement),
 
@@ -61,14 +63,7 @@ module.exports = grammar({
      */
 
     print_statement: ($) =>
-      seq(
-        "println",
-        "(",
-        "'", // Single quote only for now
-        /[^']*/, // match everything inside for testing
-        "'",
-        ")",
-      ),
-    // TODO: have to start generalizing the language and start thinking about the tree structure
+      seq("println", "(", choice($.number, $.string), ")"),
+    // TODO: have to start generalizing the language and start thinking about the tree structure, A current problem is how to deal with complex expressions.
   },
 });
