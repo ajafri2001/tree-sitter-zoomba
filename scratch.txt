@@ -3,3 +3,7 @@ println('OLA OLA OLA */. \n ')
  /* well well well
     * well
 */
+
+def x() {
+    return hello
+}

@@ -17,6 +17,8 @@ module.exports = grammar({
     // TODO: add the actual grammar rules
     source_file: ($) => repeat($._statement),
 
+    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+
     comment: ($) =>
       choice(
         seq("//", /[^\n]*/), // REGEX for Simple comments
@@ -26,10 +28,31 @@ module.exports = grammar({
     _statement: ($) =>
       choice(
         $._statement_definition,
-        // Other type of statements which are at top level!
+        $._function_definition,
+        // Other types of statements which are at top level!
       ),
 
     _statement_definition: ($) => choice($._simple_statements),
+
+    // Just returning an identifier for now
+    _function_definition: ($) =>
+      seq(
+        "def",
+        $.identifier,
+        "(",
+        optional($.function_params),
+        ")",
+        "{",
+        $.return_statement,
+        "}",
+      ),
+
+    function_params: ($) => seq($.parameter, repeat(seq(",", $.parameter))),
+
+    parameter: ($) =>
+      choice($.identifier, seq($.identifier, "=", $.identifier)),
+
+    return_statement: ($) => seq("return", $.identifier),
 
     _simple_statements: ($) => choice($.print_statement),
 
