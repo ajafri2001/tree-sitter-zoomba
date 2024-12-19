@@ -11,10 +11,9 @@
 module.exports = grammar({
   name: "zoomba",
 
-  extras: ($) => [$.comment, /\s/], // Including whitespace
+  extras: ($) => [$.comment, /\s/], // Includes whitespace and comments
 
   rules: {
-    // TODO: add the actual grammar rules
     source_file: ($) => repeat($._statement),
 
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
@@ -23,62 +22,66 @@ module.exports = grammar({
 
     comment: ($) =>
       choice(
-        seq("//", /[^\n]*/), // REGEX for Simple comments
-        seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"), // REGEX for Multi-line comments
+        seq("//", /[^\n]*/), // Single-line comments
+        seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"), // Multi-line comments
       ),
 
     _statement: ($) =>
       choice(
-        $._statement_definition,
-        $._expressions,
-        $._function_definition,
-        // Other types of statements which are at top level! TODO - need a clear definition for expressions
+        $._simple_statement,
+        $._expression,
+        $.function_definition,
+        $._assignment_definition,
       ),
 
-    _statement_definition: ($) => choice($._simple_statements),
+    _assignment_definition: ($) =>
+      seq($.left_hand_side, "=", $.right_hand_side),
 
-    _expressions: ($) => choice($.binary_expression),
+    left_hand_side: ($) => choice($.identifier, $.hash_like_function),
 
-    binary_expression: ($) =>
+    right_hand_side: ($) =>
+      choice($._simple_statement, $._expression, $.function_definition),
+
+    hash_like_function: ($) => seq("#", "(", $.parameters, ")"),
+
+    _simple_statement: ($) => choice($.print_statement, $.return_statement),
+
+    print_statement: ($) =>
+      seq("println", "(", choice($.number, $.string), ")"),
+
+    return_statement: ($) => seq("return", choice($.number, $.string)),
+
+    _expression: ($) =>
       choice(
+        $.binary_expression,
         $.identifier,
         $.string,
         $.number,
-        prec.left(1, seq($.binary_expression, "+", $.binary_expression)),
-        prec.left(1, seq($.binary_expression, "-", $.binary_expression)),
-        prec.left(2, seq($.binary_expression, "*", $.binary_expression)),
-        prec.left(2, seq($.binary_expression, "/", $.binary_expression)),
-        seq("(", $.binary_expression, ")"),
+        seq("(", $._expression, ")"),
       ),
 
-    // Just returning an identifier for now
-    _function_definition: ($) =>
+    binary_expression: ($) =>
+      prec.left(
+        choice(
+          seq($._expression, "+", $._expression),
+          seq($._expression, "-", $._expression),
+          seq($._expression, "*", $._expression),
+          seq($._expression, "/", $._expression),
+        ),
+      ),
+
+    function_definition: ($) =>
       seq(
         "def",
         $.identifier,
         "(",
-        optional($.function_params),
+        optional($.parameters),
         ")",
         $.function_body,
       ),
 
-    function_params: ($) => seq($.parameter, repeat(seq(",", $.parameter))),
+    parameters: ($) => seq($.identifier, repeat(seq(",", $.identifier))),
 
     function_body: ($) => seq("{", repeat($._statement), "}"),
-
-    parameter: ($) =>
-      choice($.identifier, seq($.identifier, "=", $.identifier)),
-
-    return_statement: ($) => seq("return", choice($.number, $.string)),
-
-    _simple_statements: ($) => choice($.print_statement, $.return_statement),
-
-    /*
-     * For now below <print_statement> is Okay IMO
-     */
-
-    print_statement: ($) =>
-      seq("println", "(", choice($.number, $.string), ")"),
-    // TODO: have to start generalizing the language and start thinking about the tree structure, A current problem is how to deal with complex expressions.
   },
 });
