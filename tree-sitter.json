@@ -5,7 +5,7 @@
       "camelcase": "Zoomba",
       "scope": "source.zm",
       "path": ".",
-      "file-types": null,
+      "file-types": [".zm", ".zoomba"],
       "injection-regex": "^zoomba$"
     }
   ],
