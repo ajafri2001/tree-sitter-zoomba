@@ -58,7 +58,7 @@ module.exports = grammar({
         $.identifier,
         $.string,
         $.number,
-        seq("(", $._expression, ")"),
+        seq("(", optional($._expression), ")"),
       ),
 
     binary_expression: ($) =>
