@@ -31,7 +31,7 @@ module.exports = grammar({
       choice(
         $._statement_definition,
         $._function_definition,
-        // Other types of statements which are at top level!
+        // Other types of statements which are at top level! TODO - need a clear definition for expressions
       ),
 
     _statement_definition: ($) => choice($._simple_statements),
@@ -44,19 +44,19 @@ module.exports = grammar({
         "(",
         optional($.function_params),
         ")",
-        "{",
-        $.return_statement,
-        "}",
+        $.function_body,
       ),
 
     function_params: ($) => seq($.parameter, repeat(seq(",", $.parameter))),
+
+    function_body: ($) => seq("{", repeat($._statement), "}"),
 
     parameter: ($) =>
       choice($.identifier, seq($.identifier, "=", $.identifier)),
 
     return_statement: ($) => seq("return", choice($.number, $.string)),
 
-    _simple_statements: ($) => choice($.print_statement),
+    _simple_statements: ($) => choice($.print_statement, $.return_statement),
 
     /*
      * For now below <print_statement> is Okay IMO

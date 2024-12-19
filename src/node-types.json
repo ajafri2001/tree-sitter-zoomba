@@ -5,6 +5,37 @@
     "fields": {}
   },
   {
+    "type": "function_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "function_body",
+          "named": true
+        },
+        {
+          "type": "function_params",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "print_statement",
+          "named": true
+        },
+        {
+          "type": "return_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "function_params",
     "named": true,
     "fields": {},
@@ -81,6 +112,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "function_body",
+          "named": true
+        },
         {
           "type": "function_params",
           "named": true

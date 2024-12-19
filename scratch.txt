@@ -5,5 +5,5 @@ println('OLA OLA OLA */. \n ')
 */
 
 def x() {
-    return 80
+    println("Hello world")
 }
