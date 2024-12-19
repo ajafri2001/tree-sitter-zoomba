@@ -6,4 +6,8 @@ println('OLA OLA OLA */. \n ')
 
 def x() {
     println("Hello world")
+    def hello() {
+        return "biryani"
+        println("hello World")
+    }
 }

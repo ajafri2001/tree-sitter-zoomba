@@ -30,11 +30,26 @@ module.exports = grammar({
     _statement: ($) =>
       choice(
         $._statement_definition,
+        $._expressions,
         $._function_definition,
         // Other types of statements which are at top level! TODO - need a clear definition for expressions
       ),
 
     _statement_definition: ($) => choice($._simple_statements),
+
+    _expressions: ($) => choice($.binary_expression),
+
+    binary_expression: ($) =>
+      choice(
+        $.identifier,
+        $.string,
+        $.number,
+        prec.left(1, seq($.binary_expression, "+", $.binary_expression)),
+        prec.left(1, seq($.binary_expression, "-", $.binary_expression)),
+        prec.left(2, seq($.binary_expression, "*", $.binary_expression)),
+        prec.left(2, seq($.binary_expression, "/", $.binary_expression)),
+        seq("(", $.binary_expression, ")"),
+      ),
 
     // Just returning an identifier for now
     _function_definition: ($) =>
