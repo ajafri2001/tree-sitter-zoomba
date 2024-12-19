@@ -49,7 +49,8 @@ module.exports = grammar({
     print_statement: ($) =>
       seq("println", "(", choice($.number, $.string), ")"),
 
-    return_statement: ($) => seq("return", choice($.number, $.string)),
+    return_statement: ($) =>
+      seq("return", choice($._simple_statement, $._expression)),
 
     _expression: ($) =>
       choice(

@@ -235,11 +235,11 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "number"
+              "name": "_simple_statement"
             },
             {
               "type": "SYMBOL",
-              "name": "string"
+              "name": "_expression"
             }
           ]
         }
