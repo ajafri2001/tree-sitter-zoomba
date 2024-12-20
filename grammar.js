@@ -26,8 +26,8 @@ module.exports = grammar({
         seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"), // Multi-line comments
       ),
 
-    parenthesis_included_params : $ => 
-    parameters: ($) => seq($.identifier, repeat(seq(",", $.identifier))),
+    parenthesis_included_params: ($) =>
+      seq($._expression, optional(repeat(seq(",", $._expression)))),
 
     _statement: ($) => choice($._simple_statement, $._compound_statement),
 
@@ -49,22 +49,33 @@ module.exports = grammar({
         seq("printf", $.parenthesis_included_params),
       ),
 
+    _expression: ($) =>
+      choice(
+        $.binary_expression,
+        $.identifier,
+        $.string,
+        $.number,
+        seq("(", optional($._expression), ")"),
+      ),
+
     assert_panic_statement: ($) =>
       choice(
         seq("assert", $.parenthesis_included_params),
         seq("panic", $.parenthesis_included_params),
       ),
 
-    return_statement: ($) =>
-      seq("return", choice($._simple_statement, $._expression)),
+    return_statement: ($) => seq("return", optional($._expression)),
 
-    break_statement: ($) => seq("break"),
+    break_statement: ($) => "break",
 
     _compound_statement: ($) =>
       choice($.if_statement, $.for_statement, $.while_statement, $.function),
 
     if_statement: ($) =>
       seq("if", $.parenthesis_included_params, optional($.function_body)),
+
+    for_statement: ($) =>
+      seq("for", $.parenthesis_included_params, optional($.function_body)),
 
     while_statement: ($) =>
       seq("while", $.parenthesis_included_params, optional($.function_body)),
@@ -84,16 +95,7 @@ module.exports = grammar({
     right_hand_side: ($) =>
       choice($._simple_statement, $._expression, $.function_definition),
 
-    hash_like_function: ($) => seq("#", "(", $.parameters, ")"),
-
-    _expression: ($) =>
-      choice(
-        $.binary_expression,
-        $.identifier,
-        $.string,
-        $.number,
-        seq("(", optional($._expression), ")"),
-      ),
+    hash_like_function: ($) => seq("#", $.parenthesis_included_params),
 
     binary_expression: ($) =>
       prec.left(
@@ -104,7 +106,6 @@ module.exports = grammar({
           seq($._expression, "/", $._expression),
         ),
       ),
-
 
     function_body: ($) => seq("{", repeat($._statement), "}"),
   },
