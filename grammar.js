@@ -26,6 +26,9 @@ module.exports = grammar({
         seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"), // Multi-line comments
       ),
 
+    parenthesis_included_params : $ => 
+    parameters: ($) => seq($.identifier, repeat(seq(",", $.identifier))),
+
     _statement: ($) => choice($._simple_statement, $._compound_statement),
 
     _simple_statement: ($) =>
@@ -55,18 +58,23 @@ module.exports = grammar({
     return_statement: ($) =>
       seq("return", choice($._simple_statement, $._expression)),
 
-    break_statement: ($) => "break",
+    break_statement: ($) => seq("break"),
 
     _compound_statement: ($) =>
-      choice(
-        $.if_statement,
-        $.for_statement,
-        $.while_statement,
-        $.function_definition,
-      ),
+      choice($.if_statement, $.for_statement, $.while_statement, $.function),
 
     if_statement: ($) =>
       seq("if", $.parenthesis_included_params, optional($.function_body)),
+
+    while_statement: ($) =>
+      seq("while", $.parenthesis_included_params, optional($.function_body)),
+
+    function: ($) => choice($.function_definition, $.function_calling),
+
+    function_definition: ($) =>
+      seq("def", $.identifier, $.parenthesis_included_params, $.function_body),
+
+    function_calling: ($) => seq($.identifier, $.parenthesis_included_params),
 
     _assignment_definition: ($) =>
       seq($.left_hand_side, "=", $.right_hand_side),
@@ -97,17 +105,6 @@ module.exports = grammar({
         ),
       ),
 
-    function_definition: ($) =>
-      seq(
-        "def",
-        $.identifier,
-        "(",
-        optional($.parameters),
-        ")",
-        $.function_body,
-      ),
-
-    parameters: ($) => seq($.identifier, repeat(seq(",", $.identifier))),
 
     function_body: ($) => seq("{", repeat($._statement), "}"),
   },
