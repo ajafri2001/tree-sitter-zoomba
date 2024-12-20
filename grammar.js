@@ -26,13 +26,47 @@ module.exports = grammar({
         seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"), // Multi-line comments
       ),
 
-    _statement: ($) =>
+    _statement: ($) => choice($._simple_statement, $._compound_statement),
+
+    _simple_statement: ($) =>
       choice(
-        $._simple_statement,
+        $.import_statement,
+        $.print_statement,
         $._expression,
-        $.function_definition,
-        $._assignment_definition,
+        $.assert_panic_statement,
+        $.return_statement,
+        $.break_statement,
       ),
+
+    import_statement: ($) => seq("import", $.string, "as", $.identifier),
+
+    print_statement: ($) =>
+      choice(
+        seq("println", $.parenthesis_included_params),
+        seq("printf", $.parenthesis_included_params),
+      ),
+
+    assert_panic_statement: ($) =>
+      choice(
+        seq("assert", $.parenthesis_included_params),
+        seq("panic", $.parenthesis_included_params),
+      ),
+
+    return_statement: ($) =>
+      seq("return", choice($._simple_statement, $._expression)),
+
+    break_statement: ($) => "break",
+
+    _compound_statement: ($) =>
+      choice(
+        $.if_statement,
+        $.for_statement,
+        $.while_statement,
+        $.function_definition,
+      ),
+
+    if_statement: ($) =>
+      seq("if", $.parenthesis_included_params, optional($.function_body)),
 
     _assignment_definition: ($) =>
       seq($.left_hand_side, "=", $.right_hand_side),
@@ -43,14 +77,6 @@ module.exports = grammar({
       choice($._simple_statement, $._expression, $.function_definition),
 
     hash_like_function: ($) => seq("#", "(", $.parameters, ")"),
-
-    _simple_statement: ($) => choice($.print_statement, $.return_statement),
-
-    print_statement: ($) =>
-      seq("println", "(", choice($.number, $.string), ")"),
-
-    return_statement: ($) =>
-      seq("return", choice($._simple_statement, $._expression)),
 
     _expression: ($) =>
       choice(
