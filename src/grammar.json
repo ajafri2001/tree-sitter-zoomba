@@ -175,7 +175,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string"
+          "name": "identifier"
         },
         {
           "type": "STRING",
@@ -631,7 +631,15 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "function_calling",
+      "_expression"
+    ],
+    [
+      "return_statement"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

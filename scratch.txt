@@ -1,0 +1,7 @@
+println("Hello world")
+
+// Hello world
+
+def main(x) {
+    return 1 + 1
+}

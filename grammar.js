@@ -11,6 +11,8 @@
 module.exports = grammar({
   name: "zoomba",
 
+  conflicts: ($) => [[$.function_calling, $._expression], [$.return_statement]],
+
   extras: ($) => [$.comment, /\s/], // Includes whitespace and comments
 
   rules: {
@@ -41,7 +43,7 @@ module.exports = grammar({
         $.break_statement,
       ),
 
-    import_statement: ($) => seq("import", $.string, "as", $.identifier),
+    import_statement: ($) => seq("import", $.identifier, "as", $.identifier),
 
     print_statement: ($) =>
       choice(
