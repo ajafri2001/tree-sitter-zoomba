@@ -1,3 +1,3 @@
-#(x, y) = clock(bossman + xmen())
-
-// Above xmen() is failing to be parsed hmm
+def x(abc, bca, cba,xmen() + 1 ) {
+    println("Hello world")
+}

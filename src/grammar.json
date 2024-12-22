@@ -297,6 +297,10 @@
           "name": "number"
         },
         {
+          "type": "SYMBOL",
+          "name": "function_calling"
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -637,6 +641,10 @@
     ],
     [
       "return_statement"
+    ],
+    [
+      "function",
+      "_expression"
     ]
   ],
   "precedences": [],

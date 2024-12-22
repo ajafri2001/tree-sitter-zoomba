@@ -11,7 +11,11 @@
 module.exports = grammar({
   name: "zoomba",
 
-  conflicts: ($) => [[$.function_calling, $._expression], [$.return_statement]],
+  conflicts: ($) => [
+    [$.function_calling, $._expression],
+    [$.return_statement],
+    [$.function, $._expression],
+  ],
 
   extras: ($) => [$.comment, /\s/], // Includes whitespace and comments
 
@@ -68,6 +72,7 @@ module.exports = grammar({
         $.identifier,
         $.string,
         $.number,
+        $.function_calling,
         seq("(", optional($._expression), ")"),
       ),
 
