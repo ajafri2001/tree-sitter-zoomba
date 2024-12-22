@@ -23,11 +23,15 @@
       "required": true,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "binary_operators",
           "named": true
         },
         {
-          "type": "comparison_expression",
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
           "named": true
         },
         {
@@ -54,7 +58,7 @@
     }
   },
   {
-    "type": "binary_expression",
+    "type": "binary_operators",
     "named": true,
     "fields": {},
     "children": {
@@ -62,11 +66,15 @@
       "required": false,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "binary_operators",
           "named": true
         },
         {
-          "type": "comparison_expression",
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
           "named": true
         },
         {
@@ -94,7 +102,7 @@
     "fields": {}
   },
   {
-    "type": "comparison_expression",
+    "type": "comparison_operators",
     "named": true,
     "fields": {},
     "children": {
@@ -102,11 +110,54 @@
       "required": false,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "binary_operators",
           "named": true
         },
         {
-          "type": "comparison_expression",
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "compound_operators",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_operators",
+          "named": true
+        },
+        {
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
           "named": true
         },
         {
@@ -183,7 +234,7 @@
           "named": true
         },
         {
-          "type": "binary_expression",
+          "type": "binary_operators",
           "named": true
         },
         {
@@ -191,7 +242,11 @@
           "named": true
         },
         {
-          "type": "comparison_expression",
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
           "named": true
         },
         {
@@ -326,11 +381,15 @@
       "required": false,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "binary_operators",
           "named": true
         },
         {
-          "type": "comparison_expression",
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
           "named": true
         },
         {
@@ -376,11 +435,15 @@
       "required": false,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "binary_operators",
           "named": true
         },
         {
-          "type": "comparison_expression",
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
           "named": true
         },
         {
@@ -420,7 +483,7 @@
           "named": true
         },
         {
-          "type": "binary_expression",
+          "type": "binary_operators",
           "named": true
         },
         {
@@ -428,7 +491,11 @@
           "named": true
         },
         {
-          "type": "comparison_expression",
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
           "named": true
         },
         {
@@ -534,6 +601,10 @@
     "named": false
   },
   {
+    "type": "%=",
+    "named": false
+  },
+  {
     "type": "'",
     "named": false
   },
@@ -554,7 +625,19 @@
     "named": false
   },
   {
+    "type": "**=",
+    "named": false
+  },
+  {
+    "type": "*=",
+    "named": false
+  },
+  {
     "type": "+",
+    "named": false
+  },
+  {
+    "type": "+=",
     "named": false
   },
   {
@@ -563,6 +646,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": "-=",
     "named": false
   },
   {
@@ -575,6 +662,10 @@
   },
   {
     "type": "//",
+    "named": false
+  },
+  {
+    "type": "/=",
     "named": false
   },
   {

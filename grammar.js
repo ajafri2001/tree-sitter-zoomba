@@ -68,8 +68,9 @@ module.exports = grammar({
 
     _expression: ($) =>
       choice(
-        $.binary_expression,
-        $.comparison_expression,
+        $.binary_operators,
+        $.comparison_operators,
+        $.compound_operators,
         $.identifier,
         $.string,
         $.number,
@@ -106,7 +107,7 @@ module.exports = grammar({
 
     function_calling: ($) => seq($.identifier, $.parenthesis_included_params),
 
-    binary_expression: ($) =>
+    binary_operators: ($) =>
       prec.left(
         choice(
           seq($._expression, "+", $._expression),
@@ -117,7 +118,7 @@ module.exports = grammar({
         ),
       ),
 
-    comparison_expression: ($) =>
+    comparison_operators: ($) =>
       prec.left(
         choice(
           seq($._expression, "<", $._expression),
@@ -126,7 +127,19 @@ module.exports = grammar({
           seq($._expression, ">=", $._expression),
           seq($._expression, "==", $._expression),
           seq($._expression, "!=", $._expression),
-          seq($._expression, "!", $._expression), // Optional: Negation
+          seq($._expression, "!", $._expression),
+        ),
+      ),
+
+    compound_operators: ($) =>
+      prec.left(
+        choice(
+          seq($._expression, "+=", $._expression),
+          seq($._expression, "-=", $._expression),
+          seq($._expression, "*=", $._expression),
+          seq($._expression, "/=", $._expression),
+          seq($._expression, "**=", $._expression),
+          seq($._expression, "%=", $._expression),
         ),
       ),
 
