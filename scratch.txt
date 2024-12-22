@@ -1,7 +1,1 @@
-println("Hello world")
-
-// Hello world
-
-def main(x) {
-    return 1 + 1
-}
+x = 1 + 1 * (3 * 3 + (1 + 1))

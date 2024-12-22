@@ -15,6 +15,33 @@
     }
   },
   {
+    "type": "assignment_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "binary_expression",
     "named": true,
     "fields": {},
@@ -94,6 +121,10 @@
       "types": [
         {
           "type": "assert_panic_statement",
+          "named": true
+        },
+        {
+          "type": "assignment_statement",
           "named": true
         },
         {
@@ -306,6 +337,10 @@
           "named": true
         },
         {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -422,6 +457,10 @@
   },
   {
     "type": "//",
+    "named": false
+  },
+  {
+    "type": "=",
     "named": false
   },
   {

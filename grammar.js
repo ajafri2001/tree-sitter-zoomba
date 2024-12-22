@@ -41,7 +41,10 @@ module.exports = grammar({
         $.assert_panic_statement,
         $.return_statement,
         $.break_statement,
+        $.assignment_statement,
       ),
+
+    assignment_statement: ($) => seq($.identifier, "=", $._expression),
 
     import_statement: ($) => seq("import", $.identifier, "as", $.identifier),
 
