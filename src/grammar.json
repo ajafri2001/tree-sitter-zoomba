@@ -463,66 +463,6 @@
         }
       ]
     },
-    "_assignment_definition": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "left_hand_side"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "SYMBOL",
-          "name": "right_hand_side"
-        }
-      ]
-    },
-    "left_hand_side": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "hash_like_function"
-        }
-      ]
-    },
-    "right_hand_side": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_simple_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "function_definition"
-        }
-      ]
-    },
-    "hash_like_function": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "#"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "parenthesis_included_params"
-        }
-      ]
-    },
     "binary_expression": {
       "type": "PREC_LEFT",
       "value": 0,

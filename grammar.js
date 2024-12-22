@@ -89,16 +89,6 @@ module.exports = grammar({
 
     function_calling: ($) => seq($.identifier, $.parenthesis_included_params),
 
-    _assignment_definition: ($) =>
-      seq($.left_hand_side, "=", $.right_hand_side),
-
-    left_hand_side: ($) => choice($.identifier, $.hash_like_function),
-
-    right_hand_side: ($) =>
-      choice($._simple_statement, $._expression, $.function_definition),
-
-    hash_like_function: ($) => seq("#", $.parenthesis_included_params),
-
     binary_expression: ($) =>
       prec.left(
         choice(
