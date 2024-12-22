@@ -29,7 +29,12 @@ module.exports = grammar({
       ),
 
     parenthesis_included_params: ($) =>
-      seq($._expression, optional(repeat(seq(",", $._expression)))),
+      seq(
+        "(",
+        optional($._expression),
+        optional(repeat(seq(",", $._expression))),
+        ")",
+      ),
 
     _statement: ($) => choice($._simple_statement, $._compound_statement),
 
@@ -44,7 +49,10 @@ module.exports = grammar({
         $.assignment_statement,
       ),
 
-    assignment_statement: ($) => seq($.identifier, "=", $._expression),
+    assignment_statement: ($) =>
+      seq(choice($.identifier, $.tuple_lhs), "=", $._expression),
+
+    tuple_lhs: ($) => seq("#", $.parenthesis_included_params),
 
     import_statement: ($) => seq("import", $.identifier, "as", $.identifier),
 

@@ -1,1 +1,3 @@
-x = 1 + 1 * (3 * 3 + (1 + 1))
+#(x, y) = clock(bossman + xmen())
+
+// Above xmen() is failing to be parsed hmm

@@ -37,6 +37,10 @@
         {
           "type": "string",
           "named": true
+        },
+        {
+          "type": "tuple_lhs",
+          "named": true
         }
       ]
     }
@@ -397,6 +401,21 @@
     "fields": {}
   },
   {
+    "type": "tuple_lhs",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "parenthesis_included_params",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "while_statement",
     "named": true,
     "fields": {},
@@ -417,6 +436,10 @@
   },
   {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#",
     "named": false
   },
   {
