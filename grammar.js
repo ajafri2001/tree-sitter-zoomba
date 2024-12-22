@@ -69,6 +69,7 @@ module.exports = grammar({
     _expression: ($) =>
       choice(
         $.binary_expression,
+        $.comparison_expression,
         $.identifier,
         $.string,
         $.number,
@@ -112,6 +113,20 @@ module.exports = grammar({
           seq($._expression, "-", $._expression),
           seq($._expression, "*", $._expression),
           seq($._expression, "/", $._expression),
+          seq($._expression, "**", $._expression),
+        ),
+      ),
+
+    comparison_expression: ($) =>
+      prec.left(
+        choice(
+          seq($._expression, "<", $._expression),
+          seq($._expression, ">", $._expression),
+          seq($._expression, "<=", $._expression),
+          seq($._expression, ">=", $._expression),
+          seq($._expression, "==", $._expression),
+          seq($._expression, "!=", $._expression),
+          seq($._expression, "!", $._expression), // Optional: Negation
         ),
       ),
 

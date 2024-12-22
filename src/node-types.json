@@ -27,6 +27,10 @@
           "named": true
         },
         {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
           "type": "function_calling",
           "named": true
         },
@@ -62,6 +66,10 @@
           "named": true
         },
         {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
           "type": "function_calling",
           "named": true
         },
@@ -84,6 +92,41 @@
     "type": "comment",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "comparison_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "for_statement",
@@ -145,6 +188,10 @@
         },
         {
           "type": "break_statement",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
           "named": true
         },
         {
@@ -283,6 +330,10 @@
           "named": true
         },
         {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
           "type": "function_calling",
           "named": true
         },
@@ -329,6 +380,10 @@
           "named": true
         },
         {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
           "type": "function_calling",
           "named": true
         },
@@ -370,6 +425,10 @@
         },
         {
           "type": "break_statement",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
           "named": true
         },
         {
@@ -459,6 +518,14 @@
     }
   },
   {
+    "type": "!",
+    "named": false
+  },
+  {
+    "type": "!=",
+    "named": false
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -480,6 +547,10 @@
   },
   {
     "type": "*",
+    "named": false
+  },
+  {
+    "type": "**",
     "named": false
   },
   {
@@ -507,7 +578,27 @@
     "named": false
   },
   {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": "==",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
     "named": false
   },
   {
