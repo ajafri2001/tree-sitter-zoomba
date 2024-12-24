@@ -19,4 +19,4 @@
 (identifier) @type
 (number) @number
 (function_definition (identifier) @function)
-
+(function_calling (identifier) @function)
