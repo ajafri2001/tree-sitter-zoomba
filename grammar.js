@@ -75,6 +75,7 @@ module.exports = grammar({
         $.string,
         $.number,
         $.function_calling,
+        $.function_definition,
         seq("(", optional($._expression), ")"),
       ),
 
@@ -103,7 +104,12 @@ module.exports = grammar({
     function: ($) => choice($.function_definition, $.function_calling),
 
     function_definition: ($) =>
-      seq("def", $.identifier, $.parenthesis_included_params, $.function_body),
+      seq(
+        "def",
+        optional($.identifier),
+        $.parenthesis_included_params,
+        $.function_body,
+      ),
 
     function_calling: ($) => seq($.identifier, $.parenthesis_included_params),
 

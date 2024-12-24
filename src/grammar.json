@@ -309,6 +309,10 @@
           "name": "function_calling"
         },
         {
+          "type": "SYMBOL",
+          "name": "function_definition"
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -508,8 +512,16 @@
           "value": "def"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",

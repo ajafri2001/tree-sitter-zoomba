@@ -39,6 +39,10 @@
           "named": true
         },
         {
+          "type": "function_definition",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -79,6 +83,10 @@
         },
         {
           "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
           "named": true
         },
         {
@@ -126,6 +134,10 @@
           "named": true
         },
         {
+          "type": "function_definition",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -162,6 +174,10 @@
         },
         {
           "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
           "named": true
         },
         {
@@ -259,6 +275,10 @@
         },
         {
           "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
           "named": true
         },
         {
@@ -397,6 +417,10 @@
           "named": true
         },
         {
+          "type": "function_definition",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -448,6 +472,10 @@
         },
         {
           "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
           "named": true
         },
         {
@@ -508,6 +536,10 @@
         },
         {
           "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
           "named": true
         },
         {
