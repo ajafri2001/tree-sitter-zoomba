@@ -77,11 +77,21 @@ module.exports = grammar({
         $.identifier,
         $.string,
         $.number,
+        //$.dicts,
+        $.list,
         $.implicit_arguments,
         $.function_calling,
         $.function_definition,
         $.method_calling,
         seq("(", optional($._expression), ")"),
+      ),
+
+    list: ($) =>
+      seq(
+        "[",
+        optional($._expression),
+        optional(repeat(seq(",", $._expression))),
+        "]",
       ),
 
     assert_panic_statement: ($) =>

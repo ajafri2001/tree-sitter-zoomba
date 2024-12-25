@@ -51,6 +51,10 @@
           "named": true
         },
         {
+          "type": "list",
+          "named": true
+        },
+        {
           "type": "method_calling",
           "named": true
         },
@@ -103,6 +107,10 @@
         },
         {
           "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "list",
           "named": true
         },
         {
@@ -162,6 +170,10 @@
           "named": true
         },
         {
+          "type": "list",
+          "named": true
+        },
+        {
           "type": "method_calling",
           "named": true
         },
@@ -210,6 +222,10 @@
         },
         {
           "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "list",
           "named": true
         },
         {
@@ -330,6 +346,10 @@
           "named": true
         },
         {
+          "type": "list",
+          "named": true
+        },
+        {
           "type": "method_calling",
           "named": true
         },
@@ -438,6 +458,61 @@
     }
   },
   {
+    "type": "list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_operators",
+          "named": true
+        },
+        {
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "method_calling",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "method_calling",
     "named": true,
     "fields": {},
@@ -494,6 +569,10 @@
         },
         {
           "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "list",
           "named": true
         },
         {
@@ -560,6 +639,10 @@
         },
         {
           "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "list",
           "named": true
         },
         {
@@ -640,6 +723,10 @@
         },
         {
           "type": "import_statement",
+          "named": true
+        },
+        {
+          "type": "list",
           "named": true
         },
         {
@@ -854,6 +941,14 @@
   },
   {
     "type": ">=",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
