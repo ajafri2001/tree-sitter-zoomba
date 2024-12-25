@@ -1,4 +1,5 @@
 def map(x) as {
-    a = [a , b]
+    a = [seq(a + b), b]
+    b = {a : b}
 }
 

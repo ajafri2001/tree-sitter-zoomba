@@ -77,7 +77,7 @@ module.exports = grammar({
         $.identifier,
         $.string,
         $.number,
-        //$.dicts,
+        $.dict,
         $.list,
         $.implicit_arguments,
         $.function_calling,
@@ -94,6 +94,18 @@ module.exports = grammar({
         "]",
       ),
 
+    dict: ($) =>
+      seq(
+        "{",
+        optional(
+          seq($.key_value_pair, optional(repeat(seq(",", $.key_value_pair)))),
+        ),
+        "}",
+      ),
+
+    key_value_pair: ($) =>
+      seq(optional($._expression), ":", optional($._expression)),
+
     assert_panic_statement: ($) =>
       choice(
         seq("assert", $.parenthesis_included_params),
@@ -108,13 +120,13 @@ module.exports = grammar({
       choice($.if_statement, $.for_statement, $.while_statement, $.function),
 
     if_statement: ($) =>
-      seq("if", $.parenthesis_included_params, optional($.function_body)),
+      seq("if", $.parenthesis_included_params, $.function_body),
 
     for_statement: ($) =>
-      seq("for", $.parenthesis_included_params, optional($.function_body)),
+      seq("for", $.parenthesis_included_params, $.function_body),
 
     while_statement: ($) =>
-      seq("while", $.parenthesis_included_params, optional($.function_body)),
+      seq("while", $.parenthesis_included_params, $.function_body),
 
     function: ($) => choice($.function_definition, $.function_calling),
 

@@ -35,6 +35,10 @@
           "named": true
         },
         {
+          "type": "dict",
+          "named": true
+        },
+        {
           "type": "function_calling",
           "named": true
         },
@@ -91,6 +95,10 @@
         },
         {
           "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "dict",
           "named": true
         },
         {
@@ -154,6 +162,10 @@
           "named": true
         },
         {
+          "type": "dict",
+          "named": true
+        },
+        {
           "type": "function_calling",
           "named": true
         },
@@ -209,6 +221,10 @@
           "named": true
         },
         {
+          "type": "dict",
+          "named": true
+        },
+        {
           "type": "function_calling",
           "named": true
         },
@@ -238,6 +254,21 @@
         },
         {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dict",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "key_value_pair",
           "named": true
         }
       ]
@@ -311,6 +342,10 @@
         },
         {
           "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "dict",
           "named": true
         },
         {
@@ -458,6 +493,65 @@
     }
   },
   {
+    "type": "key_value_pair",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_operators",
+          "named": true
+        },
+        {
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "method_calling",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "list",
     "named": true,
     "fields": {},
@@ -475,6 +569,10 @@
         },
         {
           "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "dict",
           "named": true
         },
         {
@@ -556,6 +654,10 @@
           "named": true
         },
         {
+          "type": "dict",
+          "named": true
+        },
+        {
           "type": "function_calling",
           "named": true
         },
@@ -626,6 +728,10 @@
           "named": true
         },
         {
+          "type": "dict",
+          "named": true
+        },
+        {
           "type": "function_calling",
           "named": true
         },
@@ -691,6 +797,10 @@
         },
         {
           "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "dict",
           "named": true
         },
         {
@@ -917,6 +1027,10 @@
   },
   {
     "type": "/=",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {
