@@ -1,2 +1,4 @@
-vim = Object.time().time().time().time
+def map(x) as {
+    $.o * $.i
+}
 

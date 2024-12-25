@@ -306,6 +306,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "implicit_arguments"
+        },
+        {
+          "type": "SYMBOL",
           "name": "function_calling"
         },
         {
@@ -544,6 +548,10 @@
                 {
                   "type": "STRING",
                   "value": "where"
+                },
+                {
+                  "type": "STRING",
+                  "value": "->"
                 }
               ]
             },
@@ -614,6 +622,63 @@
             },
             {
               "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "implicit_arguments": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "$.o"
+            },
+            {
+              "type": "STRING",
+              "value": "$.item"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "$.i"
+            },
+            {
+              "type": "STRING",
+              "value": "$.index"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "$.c"
+            },
+            {
+              "type": "STRING",
+              "value": "$.context"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "$.p"
+            },
+            {
+              "type": "STRING",
+              "value": "$.partial"
             }
           ]
         }

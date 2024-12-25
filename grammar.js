@@ -77,6 +77,7 @@ module.exports = grammar({
         $.identifier,
         $.string,
         $.number,
+        $.implicit_arguments,
         $.function_calling,
         $.function_definition,
         $.method_calling,
@@ -112,7 +113,7 @@ module.exports = grammar({
         "def",
         optional($.identifier),
         $.parenthesis_included_params,
-        optional(choice("as", "where")),
+        optional(choice("as", "where", "->")),
         $.function_body,
       ),
 
@@ -123,6 +124,14 @@ module.exports = grammar({
       seq(
         choice($.identifier, seq($.identifier, $.parenthesis_included_params)),
         optional(seq(".", $.method_calling)),
+      ),
+
+    implicit_arguments: ($) =>
+      choice(
+        choice("$.o", "$.item"),
+        choice("$.i", "$.index"),
+        choice("$.c", "$.context"),
+        choice("$.p", "$.partial"),
       ),
 
     binary_operators: ($) =>
