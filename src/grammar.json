@@ -313,6 +313,10 @@
           "name": "function_definition"
         },
         {
+          "type": "SYMBOL",
+          "name": "method_calling"
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -528,6 +532,27 @@
           "name": "parenthesis_included_params"
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "as"
+                },
+                {
+                  "type": "STRING",
+                  "value": "where"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
           "name": "function_body"
         }
@@ -543,6 +568,43 @@
         {
           "type": "SYMBOL",
           "name": "parenthesis_included_params"
+        }
+      ]
+    },
+    "method_calling": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "parenthesis_included_params"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -912,15 +974,20 @@
   ],
   "conflicts": [
     [
-      "function_calling",
-      "_expression"
-    ],
-    [
       "return_statement"
     ],
     [
       "function",
       "_expression"
+    ],
+    [
+      "_expression",
+      "method_calling"
+    ],
+    [
+      "_expression",
+      "function_calling",
+      "method_calling"
     ]
   ],
   "precedences": [],

@@ -47,6 +47,10 @@
           "named": true
         },
         {
+          "type": "method_calling",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -91,6 +95,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "method_calling",
           "named": true
         },
         {
@@ -142,6 +150,10 @@
           "named": true
         },
         {
+          "type": "method_calling",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -182,6 +194,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "method_calling",
           "named": true
         },
         {
@@ -294,6 +310,10 @@
           "named": true
         },
         {
+          "type": "method_calling",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -393,6 +413,25 @@
     }
   },
   {
+    "type": "method_calling",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "parenthesis_included_params",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "parenthesis_included_params",
     "named": true,
     "fields": {},
@@ -422,6 +461,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "method_calling",
           "named": true
         },
         {
@@ -480,6 +523,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "method_calling",
           "named": true
         },
         {
@@ -552,6 +599,10 @@
         },
         {
           "type": "import_statement",
+          "named": true
+        },
+        {
+          "type": "method_calling",
           "named": true
         },
         {
@@ -685,6 +736,10 @@
     "named": false
   },
   {
+    "type": ".",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
@@ -774,6 +829,10 @@
   },
   {
     "type": "return",
+    "named": false
+  },
+  {
+    "type": "where",
     "named": false
   },
   {
