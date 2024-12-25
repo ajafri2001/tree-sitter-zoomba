@@ -1,4 +1,4 @@
 def map(x) as {
-    a = []
+    a = [a , b]
 }
 
