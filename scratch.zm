@@ -1,2 +1,2 @@
-vim = time.time()
+vim = Object.time().time().time().time
 

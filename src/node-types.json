@@ -425,6 +425,10 @@
           "named": true
         },
         {
+          "type": "method_calling",
+          "named": true
+        },
+        {
           "type": "parenthesis_included_params",
           "named": true
         }
