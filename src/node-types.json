@@ -1,5 +1,68 @@
 [
   {
+    "type": "abs_operators",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "abs_operators",
+          "named": true
+        },
+        {
+          "type": "binary_operators",
+          "named": true
+        },
+        {
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "method_calling",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "assert_panic_statement",
     "named": true,
     "fields": {},
@@ -22,6 +85,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "abs_operators",
+          "named": true
+        },
         {
           "type": "binary_operators",
           "named": true
@@ -85,6 +152,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "abs_operators",
+          "named": true
+        },
         {
           "type": "binary_operators",
           "named": true
@@ -150,6 +221,10 @@
       "required": false,
       "types": [
         {
+          "type": "abs_operators",
+          "named": true
+        },
+        {
           "type": "binary_operators",
           "named": true
         },
@@ -208,6 +283,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "abs_operators",
+          "named": true
+        },
         {
           "type": "binary_operators",
           "named": true
@@ -320,6 +399,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "abs_operators",
+          "named": true
+        },
         {
           "type": "assert_panic_statement",
           "named": true
@@ -520,6 +603,10 @@
       "required": false,
       "types": [
         {
+          "type": "abs_operators",
+          "named": true
+        },
+        {
           "type": "binary_operators",
           "named": true
         },
@@ -578,6 +665,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "abs_operators",
+          "named": true
+        },
         {
           "type": "binary_operators",
           "named": true
@@ -661,6 +752,10 @@
       "required": false,
       "types": [
         {
+          "type": "abs_operators",
+          "named": true
+        },
+        {
           "type": "binary_operators",
           "named": true
         },
@@ -735,6 +830,10 @@
       "required": false,
       "types": [
         {
+          "type": "abs_operators",
+          "named": true
+        },
+        {
           "type": "binary_operators",
           "named": true
         },
@@ -794,6 +893,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "abs_operators",
+          "named": true
+        },
         {
           "type": "assert_panic_statement",
           "named": true
@@ -1146,6 +1249,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

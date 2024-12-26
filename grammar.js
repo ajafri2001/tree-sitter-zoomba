@@ -78,6 +78,7 @@ module.exports = grammar({
         $.binary_operators,
         $.comparison_operators,
         $.compound_operators,
+        $.abs_operators,
         $.identifier,
         $.string,
         $.number,
@@ -109,6 +110,8 @@ module.exports = grammar({
 
     key_value_pair: ($) =>
       seq(optional($._expression), ":", optional($._expression)),
+
+    abs_operators: ($) => seq("|", $._expression, "|"),
 
     assert_panic_statement: ($) =>
       choice(

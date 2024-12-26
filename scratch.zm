@@ -1,1 +1,18 @@
 import java.lang.System as SYS
+
+/* Tests json and xml and matrices */
+j = json(_/"../sample.json", true )
+panic ( empty(j) , 'json was not loaded!' )
+// the nodes are proper?
+assert ( j.menu.id == 'file' , 'Could not find proper value!' )
+/*  Now the xml stuff */
+x = xml( _/"../books.xml", true )
+panic ( empty(x) , 'xml was not loaded!' )
+e = x.elements("//book")
+assert ( size(e) == 12  , 'Could not find all elements!' )
+assert ( (e[0]).@id == 'bk101'  , 'Could not find attribute of  element!' )
+e = x.element("//book")
+panic ( empty(e) , 'Could not find element!' )
+panic ( empty(e.text ) , 'Could not find element text!' )
+panic ( empty(e.child ) , 'Could not find element children!' )
+panic ( empty(e.parent ) , 'Could not find element paren!' )

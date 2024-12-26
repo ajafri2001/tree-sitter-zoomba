@@ -331,6 +331,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "abs_operators"
+        },
+        {
+          "type": "SYMBOL",
           "name": "identifier"
         },
         {
@@ -525,6 +529,23 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "abs_operators": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "|"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "STRING",
+          "value": "|"
         }
       ]
     },
