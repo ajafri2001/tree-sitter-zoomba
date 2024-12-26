@@ -1,5 +1,1 @@
-def map(x) as {
-    a = [seq(a + b), b]
-    b = {a : b}
-}
-
+import java.lang.System as SYS

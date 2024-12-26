@@ -61,7 +61,11 @@ module.exports = grammar({
 
     tuple_lhs: ($) => seq("#", $.parenthesis_included_params),
 
-    import_statement: ($) => seq("import", $.identifier, "as", $.identifier),
+    import_statement: ($) =>
+      prec(1, seq("import", $.import_identifier, "as", $.identifier)),
+
+    import_identifier: ($) =>
+      seq($.identifier, optional(repeat(seq(".", $.identifier)))),
 
     print_statement: ($) =>
       choice(

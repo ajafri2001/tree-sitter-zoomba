@@ -478,6 +478,21 @@
     "fields": {}
   },
   {
+    "type": "import_identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "import_statement",
     "named": true,
     "fields": {},
@@ -487,6 +502,10 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "import_identifier",
           "named": true
         }
       ]
