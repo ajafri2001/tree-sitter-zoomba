@@ -44,6 +44,10 @@
           "named": true
         },
         {
+          "type": "keyword_operators",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -130,6 +134,10 @@
           "named": true
         },
         {
+          "type": "keyword_operators",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -202,6 +210,10 @@
         },
         {
           "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "keyword_operators",
           "named": true
         },
         {
@@ -281,6 +293,10 @@
           "named": true
         },
         {
+          "type": "keyword_operators",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -349,6 +365,10 @@
         },
         {
           "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "keyword_operators",
           "named": true
         },
         {
@@ -516,6 +536,10 @@
         },
         {
           "type": "import_statement",
+          "named": true
+        },
+        {
+          "type": "keyword_operators",
           "named": true
         },
         {
@@ -721,6 +745,85 @@
           "named": true
         },
         {
+          "type": "keyword_operators",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "list_calling",
+          "named": true
+        },
+        {
+          "type": "method_calling",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesis_included_params",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "keyword_operators",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "abs_operators",
+          "named": true
+        },
+        {
+          "type": "binary_operators",
+          "named": true
+        },
+        {
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "keyword_operators",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -789,6 +892,10 @@
         },
         {
           "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "keyword_operators",
           "named": true
         },
         {
@@ -863,6 +970,10 @@
           "named": true
         },
         {
+          "type": "keyword_operators",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -934,6 +1045,10 @@
           "named": true
         },
         {
+          "type": "keyword_operators",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -1002,6 +1117,10 @@
         },
         {
           "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "keyword_operators",
           "named": true
         },
         {
@@ -1088,6 +1207,10 @@
         },
         {
           "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "keyword_operators",
           "named": true
         },
         {
@@ -1188,6 +1311,10 @@
         },
         {
           "type": "import_statement",
+          "named": true
+        },
+        {
+          "type": "keyword_operators",
           "named": true
         },
         {
@@ -1413,11 +1540,19 @@
     "named": false
   },
   {
+    "type": "===",
+    "named": false
+  },
+  {
     "type": ">",
     "named": false
   },
   {
     "type": ">=",
+    "named": false
+  },
+  {
+    "type": "??",
     "named": false
   },
   {
@@ -1458,6 +1593,10 @@
   },
   {
     "type": "import",
+    "named": false
+  },
+  {
+    "type": "isa",
     "named": false
   },
   {

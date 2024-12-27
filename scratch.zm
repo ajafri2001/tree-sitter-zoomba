@@ -1,27 +1,27 @@
-/* Tests json and xml and matrices */
-j = json(_/"../sample.json", true )
-panic ( empty(j) , 'json was not loaded!' )
-// the nodes are proper?
-assert ( j.menu.id == 'file' , 'Could not find proper value!' )
-/*  Now the xml stuff */
-x = xml( _/"../books.xml", true )
-panic ( empty(x) , 'xml was not loaded!' )
-e = x.elements("//book")
-assert ( size(e) == 12  , 'Could not find all elements!' )
-assert ( (e[0]).@id == 'bk101'  , 'Could not find attribute of  element!' )
-e = x.element("//book")
-panic ( empty(e) , 'Could not find element!' )
-panic ( empty(e.text ) , 'Could not find element text!' )
-panic ( empty(e.child ) , 'Could not find element children!' )
-panic ( empty(e.parent ) , 'Could not find element paren!' )
+y = yaml(_/"../sample.yaml", true )
+assert( 3484312313131321131 === y.invoice   , 'Yaml loading failed!' )
+assert( y.bv isa 'bool' , 'Boolean parsing in Yaml Failed!')
+assert( y.int_as_str isa 'str' , 'Forcing int as str did not work!' )
+assert( y.double_as_str isa 'str', 'Forcing double as str did not work!' )
+assert( y.invoice isa 'int', 'Natural widening into long failed!' )
 
-assert ( e == e , "Equals Should be fine?")
-// try xpath
-text = x.xpath("//publish_date/text()")
-panic ( empty(text)  , 'Could not use xpath!' )
-// apply xsl ?
-x.xsl( _/"../books.xsl" , 'foo.html')
-panic ( empty( file('foo.html') ) , "The transform file resulted empty" )
-// more over, directly read xml from web ???
-x = xml( "http://www.dneonline.com/calculator.asmx?wsdl" , true )
-assert( size(x.root.children ) > 0 , "Could load from web?")
+// using xpath ?
+d = { 'a' : { 'b' : 10 , 'c' : 20 } , 'c' : 30 }
+assert( xpath(d,'/a/b') == 10, 'jxPath did not work!' )
+assert( size(xpath(d,'//c', true ) ) == 2, 'jxPath multiple select did not work!' )
+assert( xelem(d,'/a/b').value == 10, 'jxElem did not work!' )
+assert( size(xelem(d,'//c', true ) ) == 2, 'jxElem multiple select did not work!' )
+
+// convert to yaml string
+syd = ystr(d)
+assert( syd isa 'str' , 'Did not convert to string' )
+d2 = yaml(syd) // convert back to dict
+assert( d == d2 , 'Dictionary equal did not produce right result!' )
+
+// xml to json and so on and so forth : location, isLocation? , encoding, validationAgainstDTD?
+x = xml( _/'../books.xml', true , 'UTF-8', false )
+panic(  empty( jstr(x) ) , "json string conversion failed!" )
+jx = json(x)
+assert( "catalog" @ jx , "json string conversion failed" )
+assert( size( jx.catalog.book ) == 12  , "json object conversion failed" )
+assert( "catalog" @ ystr(x) , "yaml string conversion failed" )

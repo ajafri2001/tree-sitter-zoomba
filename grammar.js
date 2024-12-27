@@ -28,7 +28,7 @@ module.exports = grammar({
 
     identifier: ($) => choice($.decorated_args, /[a-zA-Z_][a-zA-Z0-9_]*/),
 
-    decorated_args: ($) => seq("@", $.identifier),
+    decorated_args: ($) => seq(token.immediate("@"), $.identifier),
 
     number: ($) => /\d+/,
     string: ($) => choice(seq("'", /[^']*/, "'"), seq('"', /[^"]*/, '"')),
@@ -82,6 +82,7 @@ module.exports = grammar({
         $.binary_operators,
         $.comparison_operators,
         $.compound_operators,
+        $.keyword_operators, // This is not very clean
         $.abs_operators,
         $.identifier,
         $.string,
@@ -197,8 +198,18 @@ module.exports = grammar({
           seq($._expression, "<=", $._expression),
           seq($._expression, ">=", $._expression),
           seq($._expression, "==", $._expression),
+          seq($._expression, "===", $._expression),
           seq($._expression, "!=", $._expression),
           seq($._expression, "!", $._expression),
+        ),
+      ),
+
+    keyword_operators: ($) =>
+      prec.left(
+        choice(
+          seq($._expression, "isa", $._expression),
+          seq($._expression, "??", $._expression),
+          seq($._expression, "@", $._expression),
         ),
       ),
 
