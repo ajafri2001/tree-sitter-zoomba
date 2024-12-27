@@ -19,6 +19,7 @@ module.exports = grammar({
     [$._expression, $.function_calling, $.method_calling],
     [$.method_calling],
     [$.dict, $.function_body],
+    [$._expression, $.list, $.method_calling],
   ],
 
   extras: ($) => [$.comment, /\s/], // Includes whitespace and comments
@@ -97,6 +98,7 @@ module.exports = grammar({
 
     list: ($) =>
       seq(
+        optional($.identifier),
         "[",
         optional($._expression),
         optional(repeat(seq(",", $._expression))),

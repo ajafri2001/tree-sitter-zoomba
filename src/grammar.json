@@ -422,6 +422,18 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": "["
         },
@@ -811,6 +823,10 @@
             {
               "type": "SYMBOL",
               "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "list"
             },
             {
               "type": "SEQ",
@@ -1298,6 +1314,11 @@
     [
       "dict",
       "function_body"
+    ],
+    [
+      "_expression",
+      "list",
+      "method_calling"
     ]
   ],
   "precedences": [],

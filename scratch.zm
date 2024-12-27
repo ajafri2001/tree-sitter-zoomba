@@ -1,1 +1,1 @@
-def CrazyObj : { a : 0 }
+assert (e[0].@id == 'bk101'  , 'Could not find attribute of  element!' )
