@@ -94,7 +94,7 @@ module.exports = grammar({
         $.function_definition,
         $.method_calling,
         seq($._expression, ".", $.identifier), // Enables chaing method calls with anything
-        seq("(", $._expression, ")"),
+        $.parenthesis_included_params,
       ),
 
     list: ($) =>

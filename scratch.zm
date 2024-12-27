@@ -14,3 +14,14 @@ panic ( empty(e) , 'Could not find element!' )
 panic ( empty(e.text ) , 'Could not find element text!' )
 panic ( empty(e.child ) , 'Could not find element children!' )
 panic ( empty(e.parent ) , 'Could not find element paren!' )
+
+assert ( e == e , "Equals Should be fine?")
+// try xpath
+text = x.xpath("//publish_date/text()")
+panic ( empty(text)  , 'Could not use xpath!' )
+// apply xsl ?
+x.xsl( _/"../books.xsl" , 'foo.html')
+panic ( empty( file('foo.html') ) , "The transform file resulted empty" )
+// more over, directly read xml from web ???
+x = xml( "http://www.dneonline.com/calculator.asmx?wsdl" , true )
+assert( size(x.root.children ) > 0 , "Could load from web?")

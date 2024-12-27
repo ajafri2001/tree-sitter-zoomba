@@ -18,5 +18,6 @@
 (comment) @comment
 (identifier) @type
 (number) @number
+(string) @string
 (function_definition (identifier) @function)
 (function_calling (identifier) @function)
