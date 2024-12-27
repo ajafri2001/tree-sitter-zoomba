@@ -153,7 +153,7 @@ module.exports = grammar({
 
     function_definition: ($) =>
       seq(
-        "def",
+        choice("def", "#"),
         optional($.identifier),
         choice(
           seq(
@@ -213,6 +213,7 @@ module.exports = grammar({
         choice(
           seq($._expression, "isa", $._expression),
           seq($._expression, "??", $._expression),
+          seq($._expression, "?", $._expression),
           seq($._expression, "@", $._expression),
         ),
       ),
