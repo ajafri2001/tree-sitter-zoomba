@@ -25,7 +25,10 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat($._statement),
 
-    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    identifier: ($) => choice($.decorated_args, /[a-zA-Z_][a-zA-Z0-9_]*/),
+
+    decorated_args: ($) => seq("@", $.identifier),
+
     number: ($) => /\d+/,
     string: ($) => choice(seq("'", /[^']*/, "'"), seq('"', /[^"]*/, '"')),
 
