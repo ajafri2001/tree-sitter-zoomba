@@ -15,11 +15,10 @@ module.exports = grammar({
     [$.return_statement],
     [$.function, $._expression],
     [$._expression, $.method_calling],
-    [$.function_calling, $.method_calling],
-    [$._expression, $.function_calling, $.method_calling],
-    [$.method_calling],
+    [$._expression, $.function_calling],
     [$.dict, $.function_body],
-    [$._expression, $.list, $.method_calling],
+    [$.list, $.list_calling],
+    [$._expression, $.list, $.list_calling],
   ],
 
   extras: ($) => [$.comment, /\s/], // Includes whitespace and comments
@@ -89,11 +88,13 @@ module.exports = grammar({
         $.number,
         $.dict,
         $.list,
+        $.list_calling,
         $.implicit_arguments,
         $.function_calling,
         $.function_definition,
         $.method_calling,
-        seq("(", optional($._expression), ")"),
+        seq($._expression, ".", $.identifier), // Enables chaing method calls with anything
+        seq("(", $._expression, ")"),
       ),
 
     list: ($) =>
@@ -104,6 +105,8 @@ module.exports = grammar({
         optional(repeat(seq(",", $._expression))),
         "]",
       ),
+
+    list_calling: ($) => seq($.identifier, "[", $._expression, "]"),
 
     dict: ($) =>
       seq(
@@ -161,8 +164,10 @@ module.exports = grammar({
 
     method_calling: ($) =>
       seq(
-        choice($.identifier, seq($.identifier, $.parenthesis_included_params)),
-        optional(seq(".", $.method_calling)),
+        $._expression,
+        ".",
+        $.identifier,
+        optional(seq("(", optional($._expression), ")")),
       ),
 
     implicit_arguments: ($) =>
