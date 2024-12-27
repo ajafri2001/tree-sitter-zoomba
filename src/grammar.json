@@ -732,37 +732,60 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "parenthesis_included_params"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "parenthesis_included_params"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "as"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "where"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "->"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            }
+          ]
         },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "as"
-                },
-                {
-                  "type": "STRING",
-                  "value": "where"
-                },
-                {
-                  "type": "STRING",
-                  "value": "->"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "function_body"
             },
             {
-              "type": "BLANK"
+              "type": "SYMBOL",
+              "name": "dict"
             }
           ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "function_body"
         }
       ]
     },
@@ -1271,6 +1294,10 @@
     ],
     [
       "method_calling"
+    ],
+    [
+      "dict",
+      "function_body"
     ]
   ],
   "precedences": [],

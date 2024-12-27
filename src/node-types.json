@@ -537,6 +537,10 @@
       "required": true,
       "types": [
         {
+          "type": "dict",
+          "named": true
+        },
+        {
           "type": "function_body",
           "named": true
         },

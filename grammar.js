@@ -18,6 +18,7 @@ module.exports = grammar({
     [$.function_calling, $.method_calling],
     [$._expression, $.function_calling, $.method_calling],
     [$.method_calling],
+    [$.dict, $.function_body],
   ],
 
   extras: ($) => [$.comment, /\s/], // Includes whitespace and comments
@@ -144,14 +145,18 @@ module.exports = grammar({
       seq(
         "def",
         optional($.identifier),
-        $.parenthesis_included_params,
-        optional(choice("as", "where", "->")),
-        $.function_body,
+        choice(
+          seq(
+            $.parenthesis_included_params,
+            optional(choice("as", "where", "->")),
+          ),
+          ":",
+        ),
+        choice($.function_body, $.dict),
       ),
 
     function_calling: ($) => seq($.identifier, $.parenthesis_included_params),
 
-    // Object.strip().split(".")
     method_calling: ($) =>
       seq(
         choice($.identifier, seq($.identifier, $.parenthesis_included_params)),

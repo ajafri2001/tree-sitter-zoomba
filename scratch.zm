@@ -1,6 +1,1 @@
-import java.lang.System as SYS
-
-def main (@args) {
-    println("Hello World")
-    a = | x + 1 |
-}
+def CrazyObj : { a : 0 }
