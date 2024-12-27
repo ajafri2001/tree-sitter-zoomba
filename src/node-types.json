@@ -1088,6 +1088,10 @@
           "named": true
         },
         {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
           "type": "binary_operators",
           "named": true
         },

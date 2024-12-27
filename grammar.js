@@ -42,8 +42,12 @@ module.exports = grammar({
     parenthesis_included_params: ($) =>
       seq(
         "(",
-        optional($._expression),
-        optional(repeat(seq(",", $._expression))),
+        optional(
+          seq(
+            choice($._expression, $.assignment_statement),
+            repeat(seq(",", choice($._expression, $.assignment_statement))),
+          ),
+        ),
         ")",
       ),
 

@@ -1,3 +1,32 @@
+/* Tests json and xml and matrices */
+j = json(_/"../sample.json", true )
+panic ( empty(j) , 'json was not loaded!' )
+// the nodes are proper?
+assert ( j.menu.id == 'file' , 'Could not find proper value!' )
+/*  Now the xml stuff */
+x = xml( _/"../books.xml", true )
+panic ( empty(x) , 'xml was not loaded!' )
+e = x.elements("//book")
+assert ( size(e) == 12  , 'Could not find all elements!' )
+assert ( (e[0]).@id == 'bk101'  , 'Could not find attribute of  element!' )
+e = x.element("//book")
+panic ( empty(e) , 'Could not find element!' )
+panic ( empty(e.text ) , 'Could not find element text!' )
+panic ( empty(e.child ) , 'Could not find element children!' )
+panic ( empty(e.parent ) , 'Could not find element paren!' )
+
+assert ( e == e , "Equals Should be fine?")
+// try xpath
+text = x.xpath("//publish_date/text()")
+panic ( empty(text)  , 'Could not use xpath!' )
+// apply xsl ?
+x.xsl( _/"../books.xsl" , 'foo.html')
+panic ( empty( file('foo.html') ) , "The transform file resulted empty" )
+// more over, directly read xml from web ???
+x = xml( "http://www.dneonline.com/calculator.asmx?wsdl" , true )
+assert( size(x.root.children ) > 0 , "Could load from web?")
+
+// do yaml here
 y = yaml(_/"../sample.yaml", true )
 assert( 3484312313131321131 === y.invoice   , 'Yaml loading failed!' )
 assert( y.bv isa 'bool' , 'Boolean parsing in Yaml Failed!')
@@ -25,3 +54,44 @@ jx = json(x)
 assert( "catalog" @ jx , "json string conversion failed" )
 assert( size( jx.catalog.book ) == 12  , "json object conversion failed" )
 assert( "catalog" @ ystr(x) , "yaml string conversion failed" )
+
+// dictionary param
+x = xml( { 'loc' : _/'../books.xml' , 'validate' : false } )
+panic( empty(x) , "xml parsing using dictionary loc failed" )
+txt = read(_/'../books.xml')
+x = xml( text=txt , validate=false )
+panic( empty(x) , "xml parsing using dictionary text failed" )
+// just so that we have it...
+x = xml( txt )
+panic( empty(x) , "xml parsing using just text failed" )
+
+// mixing of xpath and xelem
+data = {
+  "a" : {
+   "b" : {
+      "c" : 22,
+      "d" : 42
+   }
+  }
+}
+
+ce = xelem(data,"//c")
+val = xpath(ce,"../d")
+assert(val == 42, "xelem and xpath is not mixing")
+de = xelem(ce,"../d")
+val = de.value
+assert(val == 42, "xelem and xpath is not mixing")
+
+// idempotency  - json()
+l = list(1,2,3)
+j = json(l)
+assert( l === j, "json() : list is not idempotent")
+
+m =  { "x" : 42 }
+j = json(m)
+assert( m === j, "json() : map is not idempotent")
+
+s =  set(1,2,3)
+j = json(s)
+assert( s == j, "json() : set is not idempotent")
+
