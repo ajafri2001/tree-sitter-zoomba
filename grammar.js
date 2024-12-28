@@ -190,6 +190,7 @@ module.exports = grammar({
           seq($._expression, "-", $._expression),
           seq($._expression, "*", $._expression),
           seq($._expression, "/", $._expression),
+          seq($._expression, "%", $._expression),
           seq($._expression, "**", $._expression),
         ),
       ),
