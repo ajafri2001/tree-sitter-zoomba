@@ -68,6 +68,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -158,6 +162,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -234,6 +242,10 @@
         },
         {
           "type": "parenthesis_included_params",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -317,6 +329,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -389,6 +405,10 @@
         },
         {
           "type": "parenthesis_included_params",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -564,6 +584,10 @@
         },
         {
           "type": "print_statement",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -769,6 +793,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -841,6 +869,10 @@
         },
         {
           "type": "parenthesis_included_params",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -919,6 +951,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -994,6 +1030,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -1066,6 +1106,10 @@
         },
         {
           "type": "parenthesis_included_params",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -1148,6 +1192,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -1164,6 +1212,85 @@
       "types": [
         {
           "type": "parenthesis_included_params",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "range_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "abs_operators",
+          "named": true
+        },
+        {
+          "type": "binary_operators",
+          "named": true
+        },
+        {
+          "type": "comparison_operators",
+          "named": true
+        },
+        {
+          "type": "compound_operators",
+          "named": true
+        },
+        {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "function_calling",
+          "named": true
+        },
+        {
+          "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "implicit_arguments",
+          "named": true
+        },
+        {
+          "type": "keyword_operators",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "list_calling",
+          "named": true
+        },
+        {
+          "type": "method_calling",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesis_included_params",
+          "named": true
+        },
+        {
+          "type": "range_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -1235,6 +1362,10 @@
         },
         {
           "type": "parenthesis_included_params",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -1343,6 +1474,10 @@
         },
         {
           "type": "print_statement",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {

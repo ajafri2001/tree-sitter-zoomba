@@ -91,6 +91,7 @@ module.exports = grammar({
         $.identifier,
         $.string,
         $.number,
+        $.range_expression,
         $.dict,
         $.list,
         $.list_calling,
@@ -101,6 +102,8 @@ module.exports = grammar({
         seq($._expression, ".", $.identifier), // Enables chaing method calls with anything
         $.parenthesis_included_params,
       ),
+
+    range_expression: ($) => seq("[", $._expression, ":", $._expression, "]"),
 
     list: ($) =>
       seq(

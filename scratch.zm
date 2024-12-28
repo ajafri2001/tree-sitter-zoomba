@@ -1,3 +1,3 @@
-x = from( [0:100] ) where { $.o % 2 == 1  } as  { $.o ** 2 }
+x = from( [0:100] ) where { $.o % 2 == 1  }
 
-//TODO- Need to fix above [0: 100] this is not recognized
+// above is failing because "where" is being treated as an identifier, need fix
